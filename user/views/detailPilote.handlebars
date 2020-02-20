@@ -1,0 +1,31 @@
+<h1>Détail du pilote</h1>
+
+{{> lettrePilote}}
+<div id="PiloteDetail">
+    <img id="PhotoPilote" src="/image/pilote/{{detailPilote.0.phoadresse}} "alt="PhotoPilote">
+    <b>Nom :</b>{{detailPilote.0.pilnom}} {{detailPilote.0.pilprenom}}
+    <p></p>
+    <b>Date de naissance : </b> {{formatDate detailPilote.0.PILDATENAIS 'DD MMMM YYYY' }}
+    <b>Poids :</b> {{detailPilote.0.pilpoids}} kg <p></p>
+     <b>Nationalite :</b> {{detailPilote.0.PAYNOM}}  
+   <b> Taille :</b> {{detailPilote.0.piltaille}} cm 
+   {{#if detailPilote.0.ecunom}}
+   <b> Ecurie :</b> {{detailPilote.0.ecunom}}
+   {{else}}
+   <b> Ecurie :</b> Pas d'écurie disponible 
+   {{/if}}
+   <p></p>
+   <b>Principaux sponsors  :</b> 
+{{> sponsorPilote}}
+   <div id="description">
+       <b>Qui suis-je : </b> {{detailPilote.0.piltexte}}
+    </div>
+    <div id="Photos">
+    {{#each detailPhotos}}
+        <tr><td>
+            <a href="/image/pilote/{{this.phoadresse}}" data-lightbox="image-1" data-title="{{this.phosujet}} <br> {{this.phocommentaire}}"> <img  data-title="My caption" data-lightbox="/image/pilote/{{this.phoadresse}}" id="PhotosDuPilote" src="/image/pilote/{{this.phoadresse}}"alt="PhotoPilote"></a>
+
+        </td></tr>
+    {{/each}}
+    </div>
+</div>
