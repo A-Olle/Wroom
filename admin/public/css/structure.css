@@ -169,3 +169,18 @@
    max-width: 40%;
 }
 
+/* Connexion */
+
+.administration
+{
+	background-color: #000000;
+	color : white;
+}
+
+.form-example-btn
+{
+	display : flex;
+	flex-direction : row;
+}
+
+/* Connexion */
