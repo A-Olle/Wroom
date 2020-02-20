@@ -3,12 +3,13 @@
 
 <h4> Voici la liste des pilotes ayant la lettre : {{lettre}}</h4>
 {{> lettrePilote}}
+<div id="listepilotes">
  {{#each getNomPilote}}
     <div id="sectionPilote">
-    <img id="PhotoPilote" src="/image/pilote/{{this.phoadresse}}"alt="PhotoPilote">
-  
+        <img id="PhotoPilote" src="/image/pilote/{{this.phoadresse}}"alt="PhotoPilote">
         <a href="/detailPilote/{{this.pilnum}}">{{this.pilnom}} {{this.pilprenom}}</a>
+            
         
-    {{/each}}
+    </div>
+{{/each}}
 </div>
-

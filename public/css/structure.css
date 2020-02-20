@@ -70,8 +70,12 @@
 
 #PiloteDetail 
 {
-	
+	display:flex;
+	margin-bottom:3%;
+	flex-direction: row;
+	justify-content: space-between;
 }
+
 
 #Sponsor 
 {
@@ -108,7 +112,15 @@
 	text-align: center;
 	display : flex;
 	margin-bottom : 5%;
+	display:flex;
+	flex-direction: column;
   }
+
+  #listepilotes {
+	display:flex;
+	flex-direction: row;
+  }
+
   #menuPilote a	
   {
 	margin-left : 3%;
@@ -118,6 +130,11 @@
   #menuPilote 
   {
 	text-align: center;
+	border:2px solid black;
+	margin-bottom: 5%;
+	padding: 2%;
+	-moz-border-radius : 15px;
+ 	border-radius:15px;
   }
   /*Partie Pilote */
 
