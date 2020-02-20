@@ -1,0 +1,19 @@
+<h1> Résultat  du grand prix </h1>
+<table class="tabpayscir">
+	 {{#each resultatGrandPrix}}
+		<tr><td><img id="PhotoGP" src="/image/pays/{{this.payadrdrap}}" alt="drapeau du pays" />
+      <a href="/detailResultat/{{this.gpnum}}"> {{this.gpnom}}</a>
+    </td></tr>
+ {{/each}}
+</table>
+<br class="myboth" />
+
+{{#each classementGrandPrix}}
+<table>
+   <tr><td>{{this.rang}}</td> </tr>
+   <tr><td>{{this.pilnom}}</td> </tr>
+  <tr><td>{{this.pilprenom}}</td>  </tr>
+   <tr><td>{{this.tempscourse}}</td> </tr>
+   <tr><td>{{this.Points}}</td> </tr>
+</table>
+{{/each}}
