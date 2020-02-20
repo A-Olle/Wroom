@@ -46,7 +46,7 @@ module.exports.classementGrandPrix = function (id,callback) {
             sql =sql +  "WHEN rang=7 THEN '6' ";
             sql =sql + " WHEN rang=8 THEN '4' ";
             sql =sql + " WHEN rang=9 THEN '2' ";
-            sql =sql + " WHEN rang=10 THEN '0' ";
+            sql =sql + " WHEN rang=10 THEN '1' ";
             sql =sql + " END AS Points FROM ";
             sql =sql + "(";
             sql =sql + " SELECT  tempscourse, c.pilnum ,ROW_NUMBER() OVER(ORDER BY tempscourse) AS rang ";
