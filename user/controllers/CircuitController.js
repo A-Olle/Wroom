@@ -19,20 +19,7 @@ module.exports.ListerCircuits = function(request, response){
        });
  } ;
  
- /*module.exports.DetailsCircuits = function(request, response){
-    response.title = 'Détails du circuit';
-    let data = request.params.circuit;
 
-    model.getDetailsCircuits(data, function (err, result){
-       if (err) {
-           console.log(err);
-           return;
-       }
-       response.detailsCircuits = result;
-       console.log(result);
-       response.render('detailCircuits', response);
-   });
-};*/
 
  module.exports.DetailsCircuits = function(request, response){
      response.title = 'Détails du circuit';

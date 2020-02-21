@@ -15,15 +15,18 @@
 	<div id="header">
 	<img src="/image/staff_admin.jpg" alt="WROOM l'encyclopédie de la F1" />
 	</div>
+	{{#if session.admin}}
 	<div id="menu">
 	
 		<a href="/pilotes">PILOTES</a> |
-		<a href="/repertoirePilote">CIRCUITS</a> |
-		<a href="/circuits">ECURIES</a> |
-		<a href="/ecuries">RESULTATS</a> |
-		<a href="/resultats">SPONSORS</a> |
-		<a href="/resultats">Retour au site</a> 
+		<a href="/circuits">CIRCUITS</a> |
+		<a href="/ecuries">ECURIES</a> |
+		<a href="/resultats">RESULTATS</a> |
+		<a href="/sponsors">SPONSORS</a> |
+		<a href="/accueil">Retour au site</a> 
 	</div>
+	{{else}}
+	{{/if}}
 	<div id="contenu">
 		<br/>
 		<br/>
