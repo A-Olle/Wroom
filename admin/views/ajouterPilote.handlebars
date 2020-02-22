@@ -1,0 +1,18 @@
+<h1> Ajouter un pilote</h1>
+
+<label>Prénom </label>
+<label>Nom</label>
+<label>Date de naissance</label> <input type="date" id="birthday" name="birthday"> 
+<label>Nationalité</label> 
+<select>
+    {{#each listePays}} 
+    <option>
+        {{this.paynom}}
+    </option>
+    {{/each}}
+</select>
+<label>Ecurie</label> <select> </select>
+<label>Points</label>       <label>pts</label>
+<label>Poids</label>        <label>kg</label>
+<label>Taille</label>       <label>cm</label>
+<label>Description</label>
