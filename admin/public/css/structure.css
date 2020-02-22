@@ -6,7 +6,16 @@
     	padding: 0;
     	text-align: center;
     	color: #000000;
-    }
+	}
+
+	table {
+		border-collapse: collapse;
+	  }
+	  
+	  table, td, th {
+		border: 1px solid black;
+	  }
+
     .monBody #container {
     	width: 900px;
     	margin: 0 auto;
