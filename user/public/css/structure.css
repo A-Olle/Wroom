@@ -222,3 +222,14 @@
   overflow:hidden;
   padding:8px;
 }
+
+.flex {
+ display:flex;
+ flex-direction: row;
+}
+
+.flexbetween{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

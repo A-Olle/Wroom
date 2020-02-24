@@ -36,7 +36,7 @@ module.exports.classementGrandPrix = function (id,callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-             let sql ="SELECT DISTINCT  rang,pilnom,t.tempscourse, pilprenom,CASE";
+             let sql ="SELECT DISTINCT  rang,pilnom,t.tempscourse, pilprenom, gpcommentaire, CASE";
             sql =sql +" WHEN rang=1 THEN '25' ";
             sql =sql + " WHEN rang=2 THEN '18' ";
             sql =sql + " WHEN rang=3 THEN '15' ";
@@ -49,7 +49,7 @@ module.exports.classementGrandPrix = function (id,callback) {
             sql =sql + " WHEN rang=10 THEN '1' ";
             sql =sql + " END AS Points FROM ";
             sql =sql + "(";
-            sql =sql + " SELECT  tempscourse, c.pilnum ,ROW_NUMBER() OVER(ORDER BY tempscourse) AS rang ";
+            sql =sql + " SELECT  tempscourse, gpcommentaire, c.pilnum ,ROW_NUMBER() OVER(ORDER BY tempscourse) AS rang ";
             sql =sql + " FROM COURSE c INNER JOIN grandprix gp ON gp.GPNUM=c.gpnum "
             sql =sql + " WHERE c.gpnum=" + id;
             sql =sql + ")t ";
