@@ -1,19 +1,35 @@
-<h1> Résultat  du grand prix </h1>
-<table class="tabpayscir">
-	 {{#each resultatGrandPrix}}
-		<tr><td><img id="PhotoGP" src="/image/pays/{{this.payadrdrap}}" alt="drapeau du pays" />
-      <a href="/detailResultat/{{this.gpnum}}"> {{this.gpnom}}</a>
-    </td></tr>
- {{/each}}
-</table>
-<br class="myboth" />
+<h1> Résultat du grand prix </h1>
 
-{{#each classementGrandPrix}}
-<table>
-   <tr><td>{{this.rang}}</td> </tr>
-   <tr><td>{{this.pilnom}}</td> </tr>
-  <tr><td>{{this.pilprenom}}</td>  </tr>
-   <tr><td>{{this.tempscourse}}</td> </tr>
-   <tr><td>{{this.Points}}</td> </tr>
-</table>
-{{/each}}
+<div class="flexbetween">
+   <table>
+      <tr>
+         <th>Rang</th>
+         <th>Nom</th>
+         <th>Prenom</th>
+         <th>Temps</th>
+         <th>Points</th>
+      </tr>
+      {{#each classementGrandPrix}}
+      <tr>
+         <td>{{this.rang}}</td>
+         <td>{{this.pilnom}}</td>
+         <td>{{this.pilprenom}}</td>
+         <td>{{this.tempscourse}}</td>
+         <td>{{this.Points}}</td>
+      </tr>
+      {{/each}}
+   </table>
+
+   <table class="tabpayscir">
+   {{#each resultatGrandPrix}}
+   <tr>
+      <td><img id="PhotoGP" src="/image/pays/{{this.payadrdrap}}" alt="drapeau du pays" />
+         <a href="/detailResultat/{{this.gpnum}}"> {{this.gpnom}}</a>
+      </td>
+   </tr>
+   {{/each}}
+   </table>
+   <br class="myboth" />
+</div>
+<br>
+{{classementGrandPrix.1.gpcommentaire}}
