@@ -4,6 +4,7 @@ let express         = require('express'),
     bodyParser      = require('body-parser'), //pour récupérer les résultats des post
     http = require('http'),
     path = require('path');
+    formidable = require('formidable');
 
 
 let app = express();
