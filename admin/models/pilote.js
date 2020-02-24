@@ -36,10 +36,8 @@ module.exports.getPays = function (callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql =" SELECT paynom from pays"; 
-                       
-                        
-                            
+                  let sql =" SELECT paynom,paynum from pays ORDER BY(paynom) ASC"; 
+                      
 				console.log (sql);
             connexion.query(sql, callback);
 
@@ -55,14 +53,22 @@ module.exports.getEcurie = function (callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql =" SELECT ecunom from ecurie"; 
-                       
-                        
-                            
+						let sql =" SELECT ecunom,ecunum from ecurie  ORDER BY(ecunom) ASC"; 
+            
 				console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+module.exports.Ajout = function (data,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+            connexion.query('INSERT INTO pilote SET ? ',data,callback);
             connexion.release();
          }
       });

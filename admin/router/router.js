@@ -18,9 +18,8 @@ module.exports = function(app){
 //Pilote
     app.get('/pilotes',AuthentificationController.VerifierConnecter);
     app.get('/pilotes',PiloteController.Repertoire);
-    app.get('/ajouterPilote',PiloteController.Pays);
-  
-
+    app.get('/ajouterPilote',PiloteController.Pilote);
+    app.post('/ajouterPiloteResultat',PiloteController.Ajout);
 
 // tout le reste
 app.get('*', HomeController.NotFound);
