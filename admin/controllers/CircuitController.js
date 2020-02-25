@@ -1,21 +1,35 @@
-let model = require('../models/pilote.js');
+let model = require('../models/circuits.js');
 var async = require('async');
 
 module.exports.Repertoire = function(request, response){
     response.title = 'Répertoire des pilotes';
-    model.getListePilote( function (err, result) {
+    model.getListeCircuits( function (err, result) {
        if (err) {
            // gestion de l'erreur
            console.log(err);
            return;
        }
-       response.listePilote = result;
+       response.listeCircuits = result;
        console.log(result);
-       response.render('gestionPilote', response);
+       response.render('gestionCircuits', response);
     });
  }
 
+ module.exports.Circuit = function(request, response){
+    response.title = 'Répertoire des pilotes';
+    model.getPays( function (err, result) {
+       if (err) {
+           // gestion de l'erreur
+           console.log(err);
+           return;
+       }
+       response.resultPays = result;
+       console.log(result);
+       response.render('ajouterCircuits', response);
+    });
+ }
 
+/*
  module.exports.Pilote = function(request, response){
    response.title = 'Ajout pilote';
    async.parallel([
@@ -56,5 +70,7 @@ module.exports.Ajout = function(request, response){
        console.log(result);
        response.render('ajouterPiloteResultat', response);
     });
+    
  }
+ */
  
