@@ -28,3 +28,31 @@ module.exports.Repertoire = function(request, response){
        response.render('ajouterEcurie', response);
     });
  }
+
+ 
+ module.exports.SupprimerEcurie = function(request, response){
+   response.title = 'Supprimer une Ecurie ';
+   let data = request.params.ecunum;
+   async.parallel([
+      function(callback)
+      {
+          model.EcurieInfoSuppression(data, function (err, resultInfoSuppression) {callback(null,resultInfoSuppression)})
+      },
+
+      function(callback)
+      {
+          model.SupprimerEcurie(data, function (err, resultSupprimerEcurie) {callback(null, resultSupprimerEcurie)})
+      }
+  ],
+  function(err, result){
+      if (err) {
+          console.log(err);
+          return;
+      }
+      response.EcurieInfoSuppression = result[0][0];
+      response.EcurieSuppression = result[1];
+      console.log(result[0]);
+      console.log(result[1]);
+      response.render('supprimerEcurie', response);
+  });
+};  

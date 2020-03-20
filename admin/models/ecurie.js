@@ -17,7 +17,7 @@ module.exports.getListeEcurie = function (callback) {
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql =" SELECT ecunom,ecunomdir,ecupoints from ecurie e ORDER BY(ecunom)  ASC"; 
+						let sql =" SELECT ecunum,ecunom,ecunomdir,ecupoints from ecurie e ORDER BY(ecunom)  ASC"; 
                        
                         
                             
@@ -48,3 +48,43 @@ module.exports.getPays = function (callback) {
 };
 
 
+
+module.exports.SupprimerEcurie = function (ecunum,callback,callback1,callback2,callback3) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql ="DELETE from ecurie where ecunum=" + ecunum; 
+                  let sql1="DELETE from voiture where ecunum =" + ecunum;
+                  let sql2="DELETE from finance where ecunum =" + ecunum;
+                  let sql3="UPDATE pilote SET ecunum=null where ecunum =" + ecunum;
+                  
+                  connexion.query(sql3,callback3);
+                  connexion.query(sql2,callback2);
+                  connexion.query(sql1, callback1);
+                  connexion.query(sql, callback);
+         
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+module.exports.EcurieInfoSuppression = function (ecunum,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql =" SELECT ecunum,ecunom,ecunomdir,ecuadrsiege,ecupoints,ecuadresseimage,pa.paynom from ecurie e LEFT JOIN pays pa ON pa.paynum=e.paynum  where e.ecunum=" + ecunum; 
+            
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};

@@ -1,0 +1,37 @@
+<h1>Modification du pilote {{PiloteInfoModif.pilnom}} {{PiloteInfoModif.pilprenom}}</h1> 
+<form  method="POST" action="/modifierPiloteResultat"class="form-example">
+<label>Nom</label> <input type="text" name="pilnom" value="{{PiloteInfoModif.pilnom}}">
+<label>Prenom</label>  <input type="text" name="pilprenom" value="{{PiloteInfoModif.pilprenom}}">
+<label>Naissance</label>   <input type="text" name="pildatenais" value="{{formatDate PiloteInfoModif.pildatenais 'YYYY-MM-DD' }}">
+<label>Num</label>   <input type="text" name="pilnum" value="{{ PiloteInfoModif.pilnum }}">
+<label>Nationalité</label> 
+    <select name="paynum">
+        {{#each resultPays}} 
+        <option value={{this.paynum}} >
+            {{this.paynom}}
+        </option>
+        {{/each}}
+    </select>
+<label>Ecurie</label> 
+    <select name="ecunum"> 
+        {{#each resultEcurie}} 
+            <option value={{this.ecunum}} name="ecurie">
+                {{this.ecunom}}
+            </option>
+        {{/each}}
+    </select>
+<br>     <br>
+    <label>Points</label>  <input type="text"  name="pilpoints" value="{{PiloteInfoModif.pilpoints}}"> <label>pts</label>
+    <br>    <br>
+    <label>Poids</label>  <input type="text" name="pilpoids" value="{{PiloteInfoModif.pilpoids}}">  <label>kg</label>
+    <br>    <br>
+    <label>Taille</label>  <input type="text"  name="piltaille" value="{{PiloteInfoModif.piltaille}}"> <label>cm</label>
+    <br>
+    <br>
+    <label>Description</label> <textarea name="piltexte" rows="5" cols="33" value="SS{{PiloteInfoModif.piltexte}}"> </textarea>
+        <br>     <br>
+    
+    <div class="form-example-btn">
+        <input type="submit" value="Ajouter">
+    </div>
+</form>
