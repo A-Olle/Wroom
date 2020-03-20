@@ -1,0 +1,21 @@
+<h1>Modification du circuit {{CircuitInfoModif.cirnum}} </h1> 
+<form  method="POST" action="/modifierCircuitResultat"class="form-example">
+<label>Num</label>   <input type="text" name="cirnum" value="{{ CircuitInfoModif.cirnum }}">
+<label>Nom du circuit : </label> <input type="text" name="cirnom" value="{{CircuitInfoModif.cirnom}}">
+<label>Longueur du circuit :</label>  <input type="text" name="cirlongueur" value="{{CircuitInfoModif.cirlongueur}}">
+    <select name="paynum">
+        {{#each resultPays}} 
+        <option value={{this.paynum}} >
+            {{this.paynom}}
+        </option>
+        {{/each}}
+    </select>
+    <label>Nombre de spectateurs : </label>  <input type="text"  name="cirnbspectateurs" value="{{CircuitInfoModif.cirnbspectateurs}}"> <label>spectateurs</label>
+    <br>    <br>
+    <label>Description</label> <textarea name="cirtext" rows="5" cols="33" value="{{CircuitInfoModif.cirtext}}"> </textarea>
+        <br>     <br>
+    
+    <div class="form-example-btn">
+        <input type="submit" value="Ajouter">
+    </div>
+</form>
