@@ -47,6 +47,42 @@ module.exports.getEcurie = function (callback) {
       });
 };
 
+module.exports.SponsorInfoModif = function (sponum,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql =" SELECT sponum,sponom,sposectactivite from sponsor sp where sponum=" + sponum; 
+            
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+module.exports.SponsorModification = function (sponum,sponom,sposectactivite,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+                  let sql ="UPDATE sponsor set sponom='" + sponom + "'";
+                  sql = sql + ",sposectactivite='" + sposectactivite +"'";
+                  sql = sql + "where sponum=" + sponum;
+                 
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
 
 module.exports.SupprimerSponsor = function (sponum,callback,callback1,callback2) {
    // connection à la base

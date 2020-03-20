@@ -1,0 +1,10 @@
+<h1>Modification du sponsor {{SponsorInfoModif.sponum}} </h1> 
+<form  method="POST" action="/modifierSponsorResultat"class="form-example">
+<label>Num</label>   <input type="text" name="sponum" value="{{ SponsorInfoModif.sponum }}">
+<label>Nom du sponsor : </label> <input type="text" name="sponom" value="{{SponsorInfoModif.sponom}}">
+<label>Activité du sponsor : </label> <input type="text" name="sposectactivite" value="{{SponsorInfoModif.sposectactivite}}">
+   
+    <div class="form-example-btn">
+        <input type="submit" value="Ajouter">
+    </div>
+</form>

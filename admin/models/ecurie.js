@@ -47,6 +47,63 @@ module.exports.getPays = function (callback) {
       });
 };
 
+module.exports.getFournisseurPneu = function (callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+                  let sql =" SELECT fpnom,fpnum from fourn_pneu ORDER BY(fpnom) ASC"; 
+                      
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+module.exports.EcurieInfoModif = function (ecunum,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql =" SELECT e.ecunum,ecunom,e.fpnum,ecunomdir,e.paynum,pa.paynom,ecuadrsiege,ecupoints from ecurie e LEFT JOIN pays pa ON pa.paynum=e.paynum LEFT JOIN fourn_pneu fp ON fp.fpnum=e.fpnum where e.ecunum=" + ecunum; 
+            
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+module.exports.EcurieModification = function (ecunum,fpnum,ecunom,ecunomdir,ecuadrsiege,ecupoints,paynum,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+                  let sql ="UPDATE ecurie set ecunom='" + ecunom + "'";
+                  sql = sql+ ",fpnum=" + fpnum;
+                  sql = sql + ",ecunomdir='" + ecunomdir +"'";
+                  sql = sql + ",ecuadrsiege='" + ecuadrsiege +"'";
+                  sql = sql+ ",ecupoints=" + ecupoints;
+                  sql = sql+ ",paynum=" + paynum;
+                  sql = sql + " WHERE ecunum=" +ecunum;
+                 
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
 
 
 module.exports.SupprimerEcurie = function (ecunum,callback,callback1,callback2,callback3) {
