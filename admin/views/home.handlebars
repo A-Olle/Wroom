@@ -1,32 +1,31 @@
 {{#if session.admin}}
 <div class="connexion">
     <p>Vous êtes actuellement connecté</p>
-    
+
 </div>
 {{else}}
 <div class="administration">
     <h1>Administration</h1>
-    <form  method="POST" action="#"class="form-example">
-    <div class="form-example">
-        <label for="log">Login : </label>
-        <input type="text" name="login" id="login" required>
-    </div>
-    <div class="form-example">
-        <label for="pwd">Mot de passe : </label>
-        <input type="password" name="password" id="password" required>
-    </div>
-    <div class="form-example-btn">
-        <input type="submit" value="Connexion ">
-    </div>
-    <div class="form-example-btn">
-        <input type="submit" value="Annuler ">
-    </div>
+    <form method="POST" action="#" class="form-example">
+        <div class="form-example">
+            <label for="log">Login : </label>
+            <input type="text" name="login" id="login" required>
+        </div>
+        <div class="form-example">
+            <label for="pwd">Mot de passe : </label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="boutons">
+            <div class="form-example-btn">
+                <input type="submit" value="Connexion ">
+            </div>
+            <div class="form-example-btn">
+                <input class="myButton" type="submit" value="Annuler ">
+            </div>
+        </div>
+
     </form>
 </div>
 
 
 {{/if}}
-
-<div>
-    <h1>Derniers resultats</h1>
-</div>
