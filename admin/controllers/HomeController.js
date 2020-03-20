@@ -24,8 +24,6 @@ module.exports.NotFound = function(request, response){
 };
 
 
-
-
  ////////////////////// L I S T E R     C I R C U I T S
 
 //request.body.login

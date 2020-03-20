@@ -44,6 +44,7 @@ module.exports.Repertoire = function(request, response){
 
 module.exports.Ajout = function(request, response){
     response.title = 'Ajout du pilote';
+
     let data = request.body;
     console.log(data);
     model.Ajout(data, function (err, result) {
