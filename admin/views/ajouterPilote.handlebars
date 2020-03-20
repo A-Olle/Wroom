@@ -1,5 +1,6 @@
 <h1> Ajouter un pilote</h1>
-<form  method="POST" action="/ajouterPiloteResultat"class="form-example">
+
+<form  method="POST" action="/ajouterPiloteResultat" class="form-example">
     <label>Prénom </label> <input type="text" name="pilprenom"><br>
     <label>Nom</label> <input type="text" name="pilnom"><br>
     <label>Date de naissance</label> <input type="date"  name="pildatenais"> <br>
@@ -28,9 +29,10 @@
     <label>Taille</label>  <input type="text"  name="piltaille"> <label>cm</label>
     <br>
     <label>Description</label> <textarea name="piltexte" rows="5" cols="33"> </textarea>
-    <form action="fileupload" method="post" enctype="multipart/form-data">
-    <input type="file" name="filetoupload"><br>
+    <br>
+    <input type="file" name="filetoupload"><br></div>
     <div class="form-example-btn">
         <input type="submit" value="Valider">
-    </div>
+    
 </form>
+
