@@ -1,9 +1,9 @@
 <h1> Ajouter un pilote</h1>
 
-<form  method="POST" action="/ajouterPiloteResultat" class="form-example">
-    <label>Prénom </label> <input type="text" name="pilprenom"><br>
-    <label>Nom</label> <input type="text" name="pilnom"><br>
-    <label>Date de naissance</label> <input type="date"  name="pildatenais"> <br>
+<form  method="POST" action="/ajouterPiloteResultat"class="form-example">
+    <label>Prénom </label> <input type="text" name="pilprenom">     <br> <br>
+    <label>Nom</label> <input type="text" name="pilnom">     <br> <br>
+    <label>Date de naissance</label> <input type="date"  name="pildatenais">     <br> <br>
     <label>Nationalité</label> 
     <select name="paynum">
         {{#each resultPays}} 
@@ -12,7 +12,7 @@
         </option>
         {{/each}}
     </select>
-    <br>
+    <br>     <br>
     <label>Ecurie</label> 
     <select name="ecunum"> 
         {{#each resultEcurie}} 
@@ -21,18 +21,20 @@
             </option>
         {{/each}}
     </select>
-    <br>
+    <br>     <br>
     <label>Points</label>  <input type="text"  name="pilpoints"> <label>pts</label>
-    <br>
+    <br>    <br>
     <label>Poids</label>  <input type="text" name="pilpoids">  <label>kg</label>
-    <br>
+    <br>    <br>
     <label>Taille</label>  <input type="text"  name="piltaille"> <label>cm</label>
     <br>
-    <label>Description</label> <textarea name="piltexte" rows="5" cols="33"> </textarea>
     <br>
-    <input type="file" name="filetoupload"><br></div>
-    <div class="form-example-btn">
-        <input type="submit" value="Valider">
+    <label>Description</label> <textarea name="piltexte" rows="5" cols="33"> </textarea>
+
+        <br>     <br>
     
+    <div class="form-example-btn">
+        <input type="submit" value="Ajouter">
+    </div>
 </form>
 

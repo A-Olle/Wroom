@@ -1,0 +1,27 @@
+<h1> Ajouter un circuit</h1>
+<form  method="POST" action="/ajouterCircuitsResultat"class="form-example"></form>
+    <label>Nom</label> <input type="text" name="cirnom">     <br> <br>
+    <label>Longueur</label> <input type="text" name="cirlongueur">     <br> <br>
+    <label>Pays</label> 
+    <select name="paynum">
+        {{#each resultPays}} 
+        <option value={{this.paynum}} >
+            {{this.paynom}}
+        </option>
+        {{/each}}
+    </select>
+    <br>     <br>
+    Image <form action="fileupload" method="post" enctype="multipart/form-data">
+    <input type="file" name="ciradresseimage">
+    <br>
+    <br>
+    </form>
+    <label>Nombre de spectateurs</label> <input type="text" name="cirnbspectateurs">     <br> <br>
+   
+    <label>Description</label> <textarea name="cirtext" rows="5" cols="33"> </textarea>
+        <br>     <br>
+    
+    <div class="form-example-btn">
+        <input type="submit" value="Ajouter">
+    </div>
+</form>

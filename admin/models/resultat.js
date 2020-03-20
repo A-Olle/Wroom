@@ -11,17 +11,17 @@ let db = require('../configDb');
 * Récupérer l'intégralité les écuries avec l'adresse de la photo du pays de l'écurie
 * @return Un tableau qui contient le N°, le nom de l'écurie et le nom de la photo du drapeau du pays
 */
-module.exports.getListeGrandPrix = function (callback) {
+module.exports.getGrandPrix = function (callback) {
    // connection à la base
 	db.getConnection(function(err, connexion){
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-						let sql ="SELECT gpnum,gpnom,pa.payadrdrap from grandprix gp "; 
-                        sql = sql+ "LEFT JOIN circuit c ON c.cirnum=gp.cirnum ";
-                        sql = sql+ "LEFT JOIN pays pa ON pa.paynum=c.PAYNUM";
+						let sql =" SELECT gpnum,gpnom from grandprix  ORDER BY(gpnom)  ASC"; 
+                       
+                        
                             
-						//console.log (sql);
+				console.log (sql);
             connexion.query(sql, callback);
 
             // la connexion retourne dans le pool
@@ -30,13 +30,14 @@ module.exports.getListeGrandPrix = function (callback) {
       });
 };
 
+
 module.exports.classementGrandPrix = function (id,callback) {
    // connection à la base
 	db.getConnection(function(err, connexion){
         if(!err){
         	  // s'il n'y a pas d'erreur de connexion
         	  // execution de la requête SQL
-             let sql ="SELECT DISTINCT  rang,pilnom,t.tempscourse, pilprenom, gpcommentaire, CASE";
+             let sql ="SELECT DISTINCT  rang,pilnom,t.tempscourse, pilprenom, CASE";
             sql =sql +" WHEN rang=1 THEN '25' ";
             sql =sql + " WHEN rang=2 THEN '18' ";
             sql =sql + " WHEN rang=3 THEN '15' ";
@@ -57,25 +58,6 @@ module.exports.classementGrandPrix = function (id,callback) {
             sql =sql + "  LIMIT 10 ";
             connexion.query(sql, callback);
             console.log(sql);
-            // la connexion retourne dans le pool
-            connexion.release();
-         }
-      });
-};
-
-
-module.exports.detailResultat = function (id,callback) {
-   // connection à la base
-	db.getConnection(function(err, connexion){
-        if(!err){
-        	  // s'il n'y a pas d'erreur de connexion
-        	  // execution de la requête SQL
-             let sql ="SELECT DISTINCT p.piltexte,p.pilnom,p.pilprenom,ph.phoadresse,p.pilnum,PILDATENAIS,pa.PAYNOM,pilpoids,e.ecunom,p.piltaille FROM PILOTE p LEFT JOIN photo ph ";
-               sql= sql + "ON ph.pilnum=p.pilnum INNER JOIN pays pa ON pa.paynum = p.paynum LEFT JOIN ecurie e ON e.ecunum = p.ecunum WHERE p.pilnum = " + id + " and ph.phonum = 1";
-						
-						
-            connexion.query(sql, callback);
-
             // la connexion retourne dans le pool
             connexion.release();
          }

@@ -1,0 +1,24 @@
+<h1>Saisie des résultats</h1>
+
+<div class="flexbetween">
+<table>
+      <tr>
+         <th></th>
+         <th>Rang</th>
+         <th>Nom</th>
+         <th>Prenom</th>
+         <th>Temps</th>
+         <th>Points</th>
+      </tr>
+      {{#each ResultatGrandPrix}}
+      <tr>
+         <td><img  src="/image/act_delete.png " alt="act_delete"></td>
+         <td>{{this.rang}}</td>
+         <td>{{this.pilnom}}</td>
+         <td>{{this.pilprenom}}</td>
+         <td>{{this.tempscourse}}</td>
+         <td>{{this.Points}}</td>
+      </tr>
+      {{/each}}
+   </table>
+   </div>
