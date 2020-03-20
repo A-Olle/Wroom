@@ -84,6 +84,23 @@ module.exports.CircuitInfoSuppression = function (cirnum,callback) {
 };
 
 
+module.exports.CircuitInfoModif = function (cirnum,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+						let sql =" SELECT c.cirnum,cirnom,cirlongueur,cirnbspectateurs,c.paynum,pa.paynom,cirtext from circuit c LEFT JOIN pays pa ON pa.paynum=c.paynum  where c.cirnum=" + cirnum; 
+            
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
 module.exports.CircuitModification = function (cirnum,cirnom,cirlongueur,cirnbspectateurs,paynum,cirtext,callback) {
    // connection à la base
 	db.getConnection(function(err, connexion){
@@ -106,19 +123,4 @@ module.exports.CircuitModification = function (cirnum,cirnom,cirlongueur,cirnbsp
       });
 };
 
-module.exports.CircuitInfoModif = function (cirnum,callback) {
-   // connection à la base
-	db.getConnection(function(err, connexion){
-        if(!err){
-        	  // s'il n'y a pas d'erreur de connexion
-        	  // execution de la requête SQL
-						let sql =" SELECT c.cirnum,cirnom,cirlongueur,cirnbspectateurs,c.paynum,pa.paynom,cirtext from circuit c LEFT JOIN pays pa ON pa.paynum=c.paynum  where c.cirnum=" + cirnum; 
-            
-				console.log (sql);
-            connexion.query(sql, callback);
 
-            // la connexion retourne dans le pool
-            connexion.release();
-         }
-      });
-};

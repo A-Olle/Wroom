@@ -29,6 +29,74 @@ module.exports.Repertoire = function(request, response){
     });
  }
 
+
+ module.exports.EcurieInfoModif = function(request, response){
+    response.title = 'Modification d une ecurie';
+    let data = request.params.ecunum;
+    async.parallel([
+       function(callback)
+       {
+           model.EcurieInfoModif(data, function (err, resultInfo) {callback(null,resultInfo)})
+       },
+ 
+       function(callback)
+       {
+           model.getPays( function (err, resultPays) {callback(null, resultPays)})
+       },
+
+       function(callback)
+       {
+           model.getFournisseurPneu( function (err, resultFournisseurPneu) {callback(null, resultFournisseurPneu)})
+       },
+      
+   ],
+   function(err, result){
+       if (err) {
+           console.log(err);
+           return;
+       }
+       response.EcurieInfoModif = result[0][0];
+       response.resultPays = result[1];
+       response.resultFournisseurPneu = result[2];
+       console.log(result[0]);
+       console.log(result[1]);
+       console.log(result[2]);
+
+       response.render('modifierEcurie', response);
+   });
+ };  
+
+
+ 
+ module.exports.EcurieModification = function(request, response){
+    response.title = 'Modification d une ecurie ';
+   
+    let data = request.body.ecunum;
+    let fpnum = request.body.fpnum;
+    let ecunom= request.body.ecunom;
+    let ecunomdir = request.body.ecunomdir;
+    let ecuadrsiege=request.body.ecuadrsiege;
+    let ecupoints = request.body.ecupoints;
+    let paynum = request.body.paynum;
+
+    async.parallel([
+       function(callback)
+       {
+           model.EcurieModification(data,fpnum,ecunom,ecunomdir,ecuadrsiege,ecupoints,paynum,function (err, resultModificationCircuit) {callback(null, resultModificationCircuit)})
+       }
+   ],
+   function(err, result){
+       if (err) {
+           console.log(err);
+           return;
+       }
+       response.EcurieModification = result[0];
+       console.log(result[0]);
+       
+       response.render('modifierEcurieResultat', response);
+   });
+ };  
+
  
  module.exports.SupprimerEcurie = function(request, response){
    response.title = 'Supprimer une Ecurie ';

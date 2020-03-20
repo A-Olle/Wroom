@@ -46,45 +46,55 @@ module.exports = function(app){
     app.post('/ajouterCircuitsResultat',PiloteController.Ajout); */
 
      //Modif
-     app.get('/modifierCircuitParam/:cirnum',CircuitController.CircuitInfoModif);
-     app.get('/modifierCircuit/',AuthentificationController.VerifierConnecter);
-     app.post('/modifierCircuitResultat',CircuitController.CircuitModification);
+     app.get('/modifierEcurieParam/:ecunum',EcurieController.EcurieInfoModif);
+     app.get('/modifierEcurie/',AuthentificationController.VerifierConnecter);
+     app.post('/modifierEcurieResultat',EcurieController.EcurieModification);
+
     //Supprimer
     app.get('/supprimerCircuit/:cirnum',CircuitController.SupprimerCircuit);
     app.get('/supprimerCircuit/',AuthentificationController.VerifierConnecter);
 
-//Ecurie
-app.get('/ecuries',AuthentificationController.VerifierConnecter);
-app.get('/ecuries',EcurieController.Repertoire);
-app.get('/ajouterEcurie',AuthentificationController.VerifierConnecter);
-app.get('/ajouterEcurie',EcurieController.Ecurie);
-/*
-app.post('/ajouterCircuitsResultat',PiloteController.Ajout); */
+    //Ecurie
+    app.get('/ecuries',AuthentificationController.VerifierConnecter);
+    app.get('/ecuries',EcurieController.Repertoire);
+    app.get('/ajouterEcurie',AuthentificationController.VerifierConnecter);
+    app.get('/ajouterEcurie',EcurieController.Ecurie);
+    /*
+    app.post('/ajouterCircuitsResultat',PiloteController.Ajout); */
 
- //Supprimer
-   app.get('/supprimerEcurie/:ecunum',EcurieController.SupprimerEcurie);
-   app.get('/supprimerCircuit/',AuthentificationController.VerifierConnecter);
+    //Modif
+    app.get('/modifierCircuitParam/:cirnum',CircuitController.CircuitInfoModif);
+    app.get('/modifierCircuit/',AuthentificationController.VerifierConnecter);
+    app.post('/modifierCircuitResultat',CircuitController.CircuitModification);
+    //Supprimer
+    app.get('/supprimerEcurie/:ecunum',EcurieController.SupprimerEcurie);
+    app.get('/supprimerCircuit/',AuthentificationController.VerifierConnecter);
 
-//Sponsor
-app.get('/sponsors',AuthentificationController.VerifierConnecter);
-app.get('/sponsors',SponsorController.Repertoire);
-app.get('/ajouterSponsor',AuthentificationController.VerifierConnecter);
-app.get('/ajouterSponsor',SponsorController.SponsorEcurie);
-/*
-app.post('/ajouterCircuitsResultat',PiloteController.Ajout); */
+    //Sponsor
+    app.get('/sponsors',AuthentificationController.VerifierConnecter);
+    app.get('/sponsors',SponsorController.Repertoire);
+    app.get('/ajouterSponsor',AuthentificationController.VerifierConnecter);
+    app.get('/ajouterSponsor',SponsorController.SponsorEcurie);
 
-//Supprimer
-app.get('/supprimerSponsor/',AuthentificationController.VerifierConnecter);
-app.get('/supprimerSponsor/:sponum',SponsorController.SupprimerSponsor);
+      //Modif
+      app.get('/modifierSponsorParam/:sponum',SponsorController.SponsorInfoModif);
+      app.get('/modifierSponsor/',AuthentificationController.VerifierConnecter);
+      app.post('/modifierSponsorResultat',SponsorController.SponsorModification);
+    /*
+    app.post('/ajouterCircuitsResultat',PiloteController.Ajout); */
+
+    //Supprimer
+    app.get('/supprimerSponsor/',AuthentificationController.VerifierConnecter);
+    app.get('/supprimerSponsor/:sponum',SponsorController.SupprimerSponsor);
 
 
-//Resultat
-app.get('/resultat',AuthentificationController.VerifierConnecter);
-app.get('/resultat',ResultatController.Repertoire);
+    //Resultat
+    app.get('/resultat',AuthentificationController.VerifierConnecter);
+    app.get('/resultat',ResultatController.Repertoire);
 
-//Ajout
-app.get('/ajouterResultat',AuthentificationController.VerifierConnecter);
-app.get('/ajouterResultat2',ResultatController.ListePiloteGrandPrix);
+    //Ajout
+    app.get('/ajouterResultat',AuthentificationController.VerifierConnecter);
+    app.get('/ajouterResultat2',ResultatController.ListePiloteGrandPrix);
 
 
 

@@ -91,6 +91,34 @@ module.exports.PiloteInfoModif = function (pilnum,callback) {
       });
 };
 
+
+module.exports.PiloteModification = function (pilnum,pilnom,pilprenom,pildatenais,paynum,ecunum,pilpoints,pilpoids,piltaille,piltexte,callback) {
+   // connection à la base
+	db.getConnection(function(err, connexion){
+        if(!err){
+        	  // s'il n'y a pas d'erreur de connexion
+        	  // execution de la requête SQL
+                  let sql ="UPDATE pilote set pilnom='" + pilnom + "',pilprenom='" + pilprenom +"',pildatenais='" + pildatenais + "'";
+                  sql = sql+ ",paynum=" + paynum;
+                  sql= sql+ ",ecunum=" + ecunum;
+                  sql =sql+ ",pilpoints=" + pilpoints;
+                  sql = sql+ ",pilpoids=" + pilpoids;
+                  sql = sql +",piltaille=" + piltaille;
+                  sql = sql + ",piltexte='" + piltexte +"'";
+                  sql = sql + " WHERE pilnum=" +pilnum;
+                 
+				console.log (sql);
+            connexion.query(sql, callback);
+
+            // la connexion retourne dans le pool
+            connexion.release();
+         }
+      });
+};
+
+
+
+
 module.exports.PiloteInfoSuppression = function (pilnum,callback) {
    // connection à la base
 	db.getConnection(function(err, connexion){
@@ -132,29 +160,3 @@ module.exports.SupprimerPilote = function (pilnum,callback,callback1,callback2,c
          }
       });
 };
-
-module.exports.PiloteModification = function (pilnum,pilnom,pilprenom,pildatenais,paynum,ecunum,pilpoints,pilpoids,piltaille,piltexte,callback) {
-   // connection à la base
-	db.getConnection(function(err, connexion){
-        if(!err){
-        	  // s'il n'y a pas d'erreur de connexion
-        	  // execution de la requête SQL
-                  let sql ="UPDATE pilote set pilnom='" + pilnom + "',pilprenom='" + pilprenom +"',pildatenais='" + pildatenais + "'";
-                  sql = sql+ ",paynum=" + paynum;
-                  sql= sql+ ",ecunum=" + ecunum;
-                  sql =sql+ ",pilpoints=" + pilpoints;
-                  sql = sql+ ",pilpoids=" + pilpoids;
-                  sql = sql +",piltaille=" + piltaille;
-                  sql = sql + ",piltexte='" + piltexte +"'";
-                  sql = sql + " WHERE pilnum=" +pilnum;
-                 
-				console.log (sql);
-            connexion.query(sql, callback);
-
-            // la connexion retourne dans le pool
-            connexion.release();
-         }
-      });
-};
-
-
